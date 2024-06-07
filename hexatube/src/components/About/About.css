@@ -1,0 +1,13 @@
+.about {
+  display: block;
+  margin: 1em 3em;
+  padding: 1em 1em;
+  background-color: rgba(48, 33, 81, 0.5);
+  border-radius: 15px;
+  color: rgb(216, 215, 214);
+}
+
+.title {
+  background-color: rgb(74, 51, 204);
+}
+/* Ведется работа */

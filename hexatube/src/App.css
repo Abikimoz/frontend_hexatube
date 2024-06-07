@@ -1,0 +1,75 @@
+.App {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.App::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('public/hex2.png') no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+}
+
+.App::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-color: #10034B;
+}
+
+.header {
+  margin: 1em 0;
+  width: 100vw;
+  background: linear-gradient(to right, transparent, rgba(42, 9, 92, 0.505));
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: center;
+  padding-right: 5em;
+}
+
+.content { /* Ведется работа */
+  display: flex;
+  align-items: center;
+
+  height: auto;
+  width: 80vw;
+
+}
+
+
+
+.video-grid { /* Ведется работа */
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.video-card { /* Ведется работа */
+  width: 200px;
+  margin: 10px;
+}
+
+.video-card img { /* Ведется работа */
+  width: 100%;
+}
+
+.footer {
+  color: white;
+  padding: 10px;
+  text-align: center;
+}

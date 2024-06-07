@@ -1,0 +1,27 @@
+.cat {
+  float: left;
+  width: 100vw;
+  margin-top: 0.5em;
+  background-color: rgba(48, 33, 81, 0.5);
+}
+
+.nav-icons {
+  margin-left: 3.5em;
+}
+
+li{
+  display: table;
+  height: 100%;
+  float: left;
+  margin-right: 2em;
+  cursor: pointer;
+}
+
+li .icons {
+  color: white;
+  height: 1.8em;
+  width: 1.8em;
+}
+li:last-of-type{
+  margin-right: 0;
+}
