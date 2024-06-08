@@ -12,36 +12,43 @@ import { IoMusicalNotes } from "react-icons/io5";
 import { FaCommentDots } from "react-icons/fa6";
 
 const categories = [
-  { id: 'all', icon: <RxHome className='icons'/> },
-  { id: 'transport', icon: <FaCar className='icons'/>},
-  { id: 'treveling', icon: <BsBackpack className='icons'/> },
-  { id: 'beauty', icon: <BsStars className='icons'/>},
-  { id: 'news', icon: <BsNewspaper className='icons'/>},
-  { id: 'diy', icon: <BiPalette className='icons'/>},
-  { id: 'tech', icon: <GiTechnoHeart className='icons'/>},
-  { id: 'coocking', icon: <GiForkKnifeSpoon className='icons'/>},
-  { id: 'cartoon', icon: <TbMickeyFilled className='icons'/>},
-  { id: 'education', icon: <MdCastForEducation className='icons'/>},
-  { id: 'plantsAndAnimals', icon: <GiPlantsAndAnimals className='icons'/>},
-  { id: 'family', icon: <MdFamilyRestroom className='icons'/>},
-  { id: 'psychology', icon: <MdOutlinePsychology className='icons'/>},
-  { id: 'medical', icon: <FaLaptopMedical className='icons'/>},
-  { id: 'games', icon: <GrGamepad className='icons'/>},
-  { id: 'show', icon: <MdOutlineTheaterComedy className='icons'/>},
-  { id: 'music', icon: <IoMusicalNotes className='icons'/>},
-  { id: 'films', icon: <GiFilmSpool className='icons'/>},
-  { id: 'podcast', icon: <FaCommentDots className='icons'/>},
+  { id: 'all', icon: RxHome },
+  { id: 'transport', icon: FaCar },
+  { id: 'treveling', icon: BsBackpack },
+  { id: 'beauty', icon: BsStars },
+  { id: 'news', icon: BsNewspaper },
+  { id: 'diy', icon: BiPalette },
+  { id: 'tech', icon: GiTechnoHeart },
+  { id: 'coocking', icon: GiForkKnifeSpoon },
+  { id: 'cartoon', icon: TbMickeyFilled },
+  { id: 'education', icon: MdCastForEducation },
+  { id: 'plantsAndAnimals', icon: GiPlantsAndAnimals },
+  { id: 'family', icon: MdFamilyRestroom },
+  { id: 'psychology', icon: MdOutlinePsychology },
+  { id: 'medical', icon: FaLaptopMedical },
+  { id: 'games', icon: GrGamepad },
+  { id: 'show', icon: MdOutlineTheaterComedy },
+  { id: 'music', icon: IoMusicalNotes },
+  { id: 'films', icon: GiFilmSpool },
+  { id: 'podcast', icon: FaCommentDots },
 ];
 
-function Categories({ setCategory }) {
+function Categories({ selectedCategory, setCategory }) {
   return (
     <nav className="cat">
       <div className='nav-icons'>
-        {categories.map(category => (
-          <li key={category.id} onClick={() => setCategory(category.id)}>
-            {category.icon} 
-          </li>
-        ))}
+      {categories.map(category => {
+          const IconComponent = category.icon;
+          return (
+            <li 
+              key={category.id} 
+              onClick={() => setCategory(category.id)}
+              className={selectedCategory === category.id ? 'active' : ''}
+            >
+              <IconComponent className={`icons ${selectedCategory === category.id ? 'active' : ''}`} />
+            </li>
+          );
+        })}
       </div>
     </nav>
   );
