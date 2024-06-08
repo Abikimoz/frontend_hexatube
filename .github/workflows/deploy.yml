@@ -21,4 +21,4 @@ jobs:
           cd hexatube
           npm ci
           npm run build
-          scp dist ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/nixos/react-app
+          scp -r dist ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/nixos/react-app
