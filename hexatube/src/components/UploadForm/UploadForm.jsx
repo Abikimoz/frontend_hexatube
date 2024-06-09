@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from '../services/api';
+import axios from 'axios';
 
 const UploadForm = () => {
     const [file, setFile] = useState(null);
@@ -19,10 +19,10 @@ const UploadForm = () => {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
             });
-            alert('Video uploaded successfully!');
+            alert('Видео успешно загружено!');
         } catch (error) {
-            console.error('Error uploading video', error);
-            alert('Failed to upload video');
+            console.error('Ошибка при загрузке видео', error);
+            alert('Ошибка при загрузке видео');
         }
     };
 

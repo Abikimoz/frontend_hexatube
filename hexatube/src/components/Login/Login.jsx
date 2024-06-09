@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from '../services/api';
-import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
+    const history = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ const Login = () => {
         try {
             const response = await axios.post('/login', { email, password });
             localStorage.setItem('token', response.data.token);
-            history.push('/dashboard'); // Redirect to dashboard
+            history.push('/dashboard');
         } catch (error) {
             console.error('Error logging in', error);
             alert('Failed to login');
@@ -40,3 +40,4 @@ const Login = () => {
 };
 
 export default Login;
+{/*в работе*/}

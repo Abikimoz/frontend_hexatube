@@ -1,6 +1,6 @@
 import React from 'react';
 import './VideoGrid.css';
-import VideoCard from './VideoCard';
+import VideoCard from '../VideoCard/VideoCard';
 
 const VideoGrid = ({ videos, onVideoClick }) => {
   return (

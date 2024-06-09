@@ -33,7 +33,7 @@ const categories = [
   { id: 'podcast', icon: FaCommentDots },
 ];
 
-function Categories({ selectedCategory, setCategory }) {
+const Categories = ({ selectedCategory, setCategory }) => {
   return (
     <nav className="cat">
       <div className='nav-icons'>
@@ -56,4 +56,4 @@ function Categories({ selectedCategory, setCategory }) {
 
 
 export default Categories;
-{/* Ведется работа, или готово. Оцените */}
+{/* готово*/}

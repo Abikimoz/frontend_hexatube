@@ -15,6 +15,7 @@ import './App.css'
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentComponent, setCurrentComponent] = useState('videoGrid');
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [videos, setVideos] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -31,26 +32,23 @@ function App() {
     login: <Login />,
     register: <Register />,
     dashboard: <Dashboard />,
-    
+    about: <About/>,
+    profile: <Profile/>
   };
 
   const renderContent = () => {
-    if (selectedVideo) {
-      return <VideoPlayer videoUrl={selectedVideo.url} />;
-    } else {
       return components[currentComponent] || <VideoGrid videos={videos} onVideoClick={handleVideoClick} />;
-    }
   };
 
   return (
       <div className="App">
         <Header />
-        <Profile />
+        <Profile setSelectedComponent={setCurrentComponent}/>
         <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
           <div className="content"> 
           {renderContent()}
           </div>
-         <Footer />
+         <Footer setSelectedComponent={setCurrentComponent} />
       </div>
     );
 }

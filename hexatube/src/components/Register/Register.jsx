@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import axios from '../services/api';
-import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
+    const history = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             await axios.post('/register', { email, password });
-            history.push('/login'); // Redirect to login after successful registration
+            history.push('/login');
         } catch (error) {
             console.error('Error registering', error);
             alert('Failed to register');
@@ -37,3 +37,5 @@ const Register = () => {
         </form>
     );
 };
+
+export default Register;
