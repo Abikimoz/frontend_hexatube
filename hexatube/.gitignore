@@ -7,6 +7,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+src/Components/Register
+src/Components/Team
+src/Components/UploadForm
+src/Components/Login
+
 public/video
 node_modules
 dist

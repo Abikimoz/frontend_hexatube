@@ -5,8 +5,11 @@ import './Footer.css';
 const Footer = ({ setSelectedComponent }) => {
   return (
     <footer className="footer">
+      <div className='first-block'>
+        <li onClick={() => setSelectedComponent('team')}>Команда</li>
+      </div>
       <div className='second-block'>
-        <li onClick={() => setSelectedComponent('about')}>О нас</li>
+        <li onClick={() => setSelectedComponent('about')}>О проекте</li>
       </div>
     </footer>
   );

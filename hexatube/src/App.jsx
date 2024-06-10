@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import Categories from './components/Сategories/Сategories.jsx';
@@ -9,7 +8,7 @@ import Dashboard from './components/Dashboard/Dashboard.jsx';
 import Login from './components/Login/Login.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import About from './components/About/About.jsx';
-
+import Upload from './components/Upload/Upload.jsx';
 import './App.css'
 
 function App() {
@@ -33,7 +32,8 @@ function App() {
     register: <Register />,
     dashboard: <Dashboard />,
     about: <About/>,
-    profile: <Profile/>
+    profile: <Profile />,
+    upload: <Upload/>,
   };
 
   const renderContent = () => {
@@ -43,7 +43,9 @@ function App() {
   return (
       <div className="App">
         <Header />
+        <div className='profile'>
         <Profile setSelectedComponent={setCurrentComponent}/>
+        </div>
         <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
           <div className="content"> 
           {renderContent()}

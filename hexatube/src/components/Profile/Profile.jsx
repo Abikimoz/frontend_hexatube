@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import './Profile.css'
 
 
-const Profile = () => {
+const Profile = ({setSelectedComponent}) => {
   return (
     <nav className='nav-profile'>
       <div className='profile-row'>
-        <li onClick={() => setSelectedComponent('login')} className='login'>Войти</li>
+        <li onClick={() => setSelectedComponent('login')} className='nav'>Войти</li>
+        <li onClick={() => setSelectedComponent('upload')} className='nav'>Загрузить</li>
       </div>
     </nav>
   )

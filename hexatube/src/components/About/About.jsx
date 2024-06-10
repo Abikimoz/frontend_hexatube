@@ -4,12 +4,8 @@ import './About.css';
 const About = () => {
   return (
     <div className='about'>
-      <h4 className='title'>Проект 2107д</h4>
-      <p>Гильмутдинов И.</p>
-      <p>Мур Л.</p>
-      <p>Себреков Д.</p>
-      <p>Рощин Н.</p>
-      <p>Анисимов И</p>
+      <h4 className='title'>П</h4>
+      <p></p>
     </div>
   );
 }
