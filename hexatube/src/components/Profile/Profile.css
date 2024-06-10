@@ -1,0 +1,22 @@
+
+
+.nav-profile {
+  float: left;
+  width: 100%;
+  background-color: rgba(48, 33, 81, 0.5);
+}
+
+.profile-row {
+  
+}
+
+.login {
+
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: white;
+  margin: 0 3em;
+  font-size: 1.2em;
+  cursor: pointer;
+  font-weight: 500;
+}

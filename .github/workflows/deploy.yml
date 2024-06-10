@@ -1,0 +1,24 @@
+name: deploy
+
+on: workflow_dispatch
+
+jobs:
+  builddeploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: install ssh keys
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - name: build and push to server
+        run: |
+          cd hexatube
+          npm ci
+          npm run build
+          scp -r dist ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/nixos/react-app

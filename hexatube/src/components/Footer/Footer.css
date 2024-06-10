@@ -1,0 +1,28 @@
+.footer {
+  display: block;
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  background: rgba(24, 5, 75, 0.955);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  line-height: 0.5em
+}
+
+.first-block {
+  width: 50%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.second-block {
+  width: 50%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+}
+.footer li {
+  margin: 5px 1em;
+}

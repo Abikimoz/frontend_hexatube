@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.logo {
+  display: flex;
+  float: left;
+  justify-content: space-between;
+  margin-right:2em;
+}
+
+.logo p {
+  margin-top: 0.2em;
+  margin-bottom: 0;
+  font-size: 1.5em;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.logo-img {
+  margin-top: 0;
+  height: 3em;
+  width: 3.5em;
+}
+
+.search {
+  float: right;
+  margin-right: 30%;
+
+}
