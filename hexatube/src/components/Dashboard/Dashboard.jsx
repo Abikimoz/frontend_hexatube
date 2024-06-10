@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import UploadForm from '../UploadForm/UploadForm';
+import UploadForm from '../Upload/Upload';
 
 const Dashboard = () => {
     const [videos, setVideos] = useState([]);
