@@ -2,7 +2,7 @@ import React from 'react';
 import SearchBar from '../SearchBar/SearchBar.jsx';
 import './Header.css';
 
-function Header() {
+const Header = () => {
   return (
     <header className='header'>
         <div className='logo'>

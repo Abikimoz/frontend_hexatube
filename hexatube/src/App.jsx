@@ -1,29 +1,56 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import Header from './components/Header/Header.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import Categories from './components/Сategories/Сategories.jsx';
+import VideoGrid from './components/VideoGrid/VideoGrid.jsx';
+import Register from './components/Register/Register.jsx';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
+import Login from './components/Login/Login.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import About from './components/About/About.jsx';
-
+import Upload from './components/Upload/Upload.jsx';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [category, setCategory] = useState('all'); // Default category
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentComponent, setCurrentComponent] = useState('videoGrid');
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videos, setVideos] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
   const handleSearch = (query) => {
     setSearchQuery(query);
-    // Implement search logic here, e.g., filtering videos based on the query
+  };
+
+  const components = {
+    videoGrid: <VideoGrid videos={videos} />,
+    login: <Login />,
+    register: <Register />,
+    dashboard: <Dashboard />,
+    about: <About/>,
+    profile: <Profile />,
+    upload: <Upload/>,
+  };
+
+  const renderContent = () => {
+      return components[currentComponent] || <VideoGrid videos={videos} onVideoClick={handleVideoClick} />;
   };
 
   return (
       <div className="App">
         <Header />
-        <Profile />
-        <Categories />
+        <div className='profile'>
+        <Profile setSelectedComponent={setCurrentComponent}/>
+        </div>
+        <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
           <div className="content"> 
+          {renderContent()}
           </div>
-         <Footer />
+         <Footer setSelectedComponent={setCurrentComponent} />
       </div>
     );
 }

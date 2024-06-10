@@ -1,29 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './VideoGrid.css';
-import VideoCard from './VideoCard.jsx';
-{/*
-function VideoGrid({ category }) {
-  const [videos, setVideos] = useState([]);
+import VideoCard from '../VideoCard/VideoCard';
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      const response = await fetch(`api/videos?category=${category}`);
-      const data = await response.json();
-      setVideos(data);
-    };
-
-    fetchVideos();
-  }, [category]);
-
+const VideoGrid = ({ videos, onVideoClick }) => {
   return (
     <div className="video-grid">
       {videos.map(video => (
-        <VideoCard key={video.id} video={video} />
+        <div key={video.id} className="video-item" onClick={() => onVideoClick(video)}>
+          <VideoCard video={video} />
+        </div>
       ))}
     </div>
   );
-}
+};
 
 export default VideoGrid;
-
- Ведется работа */}

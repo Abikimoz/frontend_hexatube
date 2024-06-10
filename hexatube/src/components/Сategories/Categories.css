@@ -17,10 +17,14 @@ li{
   cursor: pointer;
 }
 
-li .icons {
+.icons {
   color: white;
   height: 1.8em;
   width: 1.8em;
+}
+
+.active {
+  color: rgba(169, 169, 175, 0.804);
 }
 li:last-of-type{
   margin-right: 0;
