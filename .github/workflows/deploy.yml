@@ -1,6 +1,6 @@
 name: deploy
 
-on: workflow_dispatch
+on: push
 
 jobs:
   builddeploy:
@@ -22,3 +22,4 @@ jobs:
           npm ci
           npm run build
           scp -r dist ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/nixos/react-app
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "${{ secrets.SSH_MOVE_CMD }}"
