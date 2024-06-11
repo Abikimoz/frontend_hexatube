@@ -11,5 +11,3 @@ const VideoCard = ({ video }) => {
 }
 
 export default VideoCard;
-
-{/* Ведется работа */}
