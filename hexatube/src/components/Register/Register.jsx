@@ -9,7 +9,6 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             await axios.post('/register', { email, password });
             history.push('/login');
@@ -20,21 +19,30 @@ const Register = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+      <div className='container'>
+        <form onSubmit={handleSubmit} className='login-form'>
+          <h2>Регистрация</h2>
+          <div className="form-group">
+          <label htmlFor="email">Email:</label>
             <input 
                 type="email" 
                 placeholder="Email" 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
             />
-            <input 
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Пароль:</label>
+              <input 
                 type="password" 
                 placeholder="Password" 
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
-            />
-            <button type="submit">Register</button>
+              />
+          </div>
+          <button type="submit">Зарегистрироваться</button>
         </form>
+        </div>
     );
 };
 

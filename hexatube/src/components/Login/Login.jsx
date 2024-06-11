@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ setSelectedComponent }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -18,10 +19,8 @@ const Login = () => {
     }
   };
 
-  const handleRegisterLinkClick = () => setShowRegister(true); 
-
   return (
-    <div className="login-container">
+    <div className="container">
       <form onSubmit={handleSubmit} className="login-form">
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}
@@ -47,10 +46,13 @@ const Login = () => {
         </div>
         <button type="submit">Войти</button>
       </form>
-      <p><a href="#" onClick={handleRegisterLinkClick}>Register</a></p>
+      <p className='reg' onClick={() => setSelectedComponent('register')}>Регистрация</p>
     </div>
   );
 };
 
+Login.propTypes = {
+  setSelectedComponent: PropTypes.func.isRequired,
+};
 
 export default Login;

@@ -1,21 +1,13 @@
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f7f7f7;
-}
-
 .login-form {
-  background: #fff;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 20em;
   text-align: center;
 }
 
 .login-form h2 {
+  color:#ccc;
   margin-bottom: 1.5rem;
 }
 
@@ -25,6 +17,7 @@
 }
 
 .form-group label {
+  color:#ccc;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -33,13 +26,14 @@
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
+  background-color: #eaebe6dc;
   border-radius: 4px;
 }
 
 button {
   width: 100%;
   padding: 0.5rem;
-  background: #007bff;
+  background-color: #2c0b6878;
   border: none;
   border-radius: 4px;
   color: #fff;
@@ -49,10 +43,20 @@ button {
 }
 
 button:hover {
-  background: #0056b3;
+  background: #0f0244;;
 }
 
 .error {
   color: #ff0000;
   margin-bottom: 1rem;
+}
+
+.reg {
+  color: white;
+
+  cursor: pointer;
+}
+
+.reg:hover {
+  color:#a19eab;
 }

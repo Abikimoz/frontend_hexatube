@@ -11,6 +11,7 @@ const Upload = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -21,6 +22,7 @@ const Upload = () => {
     const reader = new FileReader();
     reader.onload = () => {
       setImagePreview(reader.result);
+      setIsImageLoaded(true);
     };
     reader.readAsDataURL(e.target.files[0]);
   };
@@ -47,77 +49,74 @@ const Upload = () => {
 
   return (
     <div className='upload'>
-      <div className='background'>
-        <h2>Загрузка</h2>
-      </div>
       <form onSubmit={handleSubmit} className='upload-form'>
-        <div className='form-group'>
-          <label htmlFor='title'>Название:</label>
-          <input 
-            type='text' 
-            id='title' 
-            value={title} 
-            onChange={(e) => setTitle(e.target.value)} 
-            required 
-          />
+        <div className='form-left'>
+          <div className='form-group'>
+            <label htmlFor='title'>Название:</label>
+            <input 
+              type='text' 
+              id='title' 
+              value={title} 
+              onChange={(e) => setTitle(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor="author">Автор:</label>
+            <input 
+              type='text' 
+              id='author' 
+              value={author} 
+              onChange={(e) => setAuthor(e.target.value)} 
+              required 
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='category'>Категория:</label>
+            <select 
+              id='category' 
+              value={selectedCategory} 
+              onChange={(e) => setSelectedCategory(e.target.value)} 
+              required 
+            >
+              {categories.map(category => (
+                <option key={category.id} value={category.id}>{category.name}</option>
+              ))}
+            </select>
+          </div>
+          <div className='form-group'>
+            <label htmlFor="file">Видео:</label>
+            <input 
+              type='file' 
+              id='file' 
+              accept='video/*' 
+              onChange={handleFileChange} 
+              required 
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor="image">Preview:</label>
+            <input 
+              type='file' 
+              id='image' 
+              accept='image/*' 
+              onChange={handleImageChange} 
+              required 
+            />
+          </div>
+          <div className='button-container'>
+            <button type='submit'>
+              <FaCloudUploadAlt color='white' size={50}/>
+            </button>
+          </div>
         </div>
-        <div className='form-group'>
-          <label htmlFor="author">Автор:</label>
-          <input 
-            type='text' 
-            id='author' 
-            value={author} 
-            onChange={(e) => setAuthor(e.target.value)} 
-            required 
-          />
+        <div className={`image-preview ${!isImageLoaded ? 'hidden' : ''}`}>
+          <div className='preview-text'>Preview:</div>
+          {imagePreview && <img src={imagePreview} alt="Предпросмотр" />}
         </div>
-        <div className='form-group'>
-          <label htmlFor='category'>Категория:</label>
-          <select 
-            id='category' 
-            value={selectedCategory} 
-            onChange={(e) => setSelectedCategory(e.target.value)} 
-            required 
-          >
-            {categories.map(category => (
-              <option key={category.id} value={category.id}>{category.name}</option>
-            ))}
-          </select>
-        </div>
-        <div className='form-group'>
-          <label htmlFor="file">Видео:</label>
-          <input 
-            type='file' 
-            id='file' 
-            accept='video/*' 
-            onChange={handleFileChange} 
-            required 
-          />
-        </div>
-        <div className='form-group '>
-          <label htmlFor="image">Изображение:</label>
-          <input 
-            type='file' 
-            id='image' 
-            accept='image/*' 
-            onChange={handleImageChange} 
-            required 
-          />
-        </div>
-        <div>
-          {imagePreview && (
-            <div className="image-preview">
-              <img src={imagePreview} alt="Предпросмотр" />
-            </div>
-          )}
-        </div>
-        
-
-        <button type='submit'><FaCloudUploadAlt color='white' size={50}/></button>
       </form>
     </div>
   );
 };
-
 
 export default Upload;
