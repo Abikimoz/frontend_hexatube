@@ -46,15 +46,36 @@
   justify-content: center;
   align-items: center;
   margin-right: 0;
+  justify-content: space-between;
+  flex-flow: row wrap;
   height: auto;
   width: 100vw;
 }
 
 .upload {
+  display: flex;
   float: left;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   background-color: rgba(48, 33, 81, 0.5);
-  
+  height: 100%;
+  margin-bottom: 1em;
+  height: auto;
+  color: rgb(247, 249, 249);
+  width: auto;
+  margin: 1em 3em;
+}
+
+.container {
+  display: block;
+  justify-content: center;
+  background-color: rgba(48, 33, 81, 0.5);
+  align-items: center;
+  height: 100%;
+  float:left;
+  margin: 1em 3em;
+  text-align: center;
 }
 
 .video-grid { /* Ведется работа */

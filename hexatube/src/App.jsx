@@ -9,6 +9,7 @@ import Login from './components/Login/Login.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import About from './components/About/About.jsx';
 import Upload from './components/Upload/Upload.jsx';
+import Team from './components/Team/Team.jsx';
 import './App.css'
 
 function App() {
@@ -28,12 +29,14 @@ function App() {
 
   const components = {
     videoGrid: <VideoGrid videos={videos} />,
-    login: <Login />,
+    login: <Login setSelectedComponent={setCurrentComponent}/>,
     register: <Register />,
     dashboard: <Dashboard />,
     about: <About/>,
-    profile: <Profile />,
+    profile: <Profile setSelectedComponent={setCurrentComponent}/>,
+    team: <Team/>,
     upload: <Upload/>,
+    header: <Header setSelectedComponent={setCurrentComponent}/>,
   };
 
   const renderContent = () => {
@@ -42,7 +45,7 @@ function App() {
 
   return (
       <div className="App">
-        <Header />
+        <Header setSelectedComponent={setCurrentComponent}/>
         <div className='profile'>
         <Profile setSelectedComponent={setCurrentComponent}/>
         </div>
