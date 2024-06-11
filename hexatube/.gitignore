@@ -7,12 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-src/Components/Register
-src/Components/Team
-src/Components/UploadForm
-src/Components/Login
 
 public/video
+*.mp4
+
 node_modules
 dist
 dist-ssr
