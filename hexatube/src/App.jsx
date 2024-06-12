@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
+import axios from 'axios';
 import Header from './components/Header/Header.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import Categories from './components/Сategories/Сategories.jsx';
@@ -19,13 +20,51 @@ function App() {
   const [videos, setVideos] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
+  useEffect(() => {
+    fetchVideos();
+}, [selectedCategory, searchQuery]);
 
-  const handleSearch = (query) => {
+const fetchVideos = async () => {
+    try {
+        const response = await axios.get('https://hexatube.fun:443/api/video/list', {
+            params: {
+                page_size: 10,
+                page: 1,
+                category: selectedCategory !== 'all' ? selectedCategory : undefined,
+                query: searchQuery || undefined
+            },
+            headers: {
+                accept: 'application/json'
+            }
+        });
+
+        console.log('Response data:', response.data);
+
+        const videoData = response.data.videos.map((video) => ({
+            id: video.id,
+            title: video.name,
+            thumbnail: video.preview
+        }));
+        
+        setVideos(videoData);
+        console.log('Videos set:', videoData);
+    } catch (error) {
+        console.error('Error fetching the videos: ', error);
+    }
+};
+
+const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+};
+
+const handleSearch = (query) => {
     setSearchQuery(query);
-  };
+};
+
+const handleVideoClick = (video) => {
+    setSelectedVideo(video);
+    setCurrentComponent('videoDetail');
+};
 
   const components = {
     videoGrid: <VideoGrid videos={videos} />,
@@ -37,6 +76,11 @@ function App() {
     team: <Team/>,
     upload: <Upload/>,
     header: <Header setSelectedComponent={setCurrentComponent}/>,
+    videoDetail: selectedVideo ? (
+        <div>
+            <h2>Выбрано видео: {selectedVideo.title}</h2>
+        </div>
+    ) : null,
   };
 
   const renderContent = () => {
@@ -53,9 +97,13 @@ function App() {
           <div className="content"> 
           {renderContent()}
           </div>
-         <Footer setSelectedComponent={setCurrentComponent} />
+          <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
+          <div className="content">
+              {renderContent()}
+          </div>
+          <Footer setSelectedComponent={setCurrentComponent} />
       </div>
-    );
+  );
 }
 
 export default App;
