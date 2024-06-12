@@ -76,7 +76,6 @@ const handleVideoClick = (video) => {
       videoDetail: selectedVideo ? (
           <div>
               <h2>Выбрано видео: {selectedVideo.title}</h2>
-              {/* Здесь можно добавить больше информации о видео */}
           </div>
       ) : null,
   };

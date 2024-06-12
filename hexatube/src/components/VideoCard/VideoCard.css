@@ -8,12 +8,12 @@
   background-color: #ffffff44;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 20vw;  /* Ширина в процентах от ширины вьюпорта */
-  height: 12vh; /* Высота в процентах от высоты вьюпорта */
+  width: 20vw;
+  height: 20vh;
   margin: 1vw;
   cursor: pointer;
   overflow: hidden;
-  position: relative; /* Чтобы текст мог быть позиционирован абсолютно */
+  position: relative;
 }
 
 .video-card img {
@@ -26,12 +26,11 @@
 .video-card .video-title {
   font-size: 16px;
   font-weight: bold;
-  text-align: left;  /* Выравнивание текста по левому краю */
+  text-align: left;
   color: #000000;
   position: absolute;
-  bottom: 10px;  /* Смещение текста к нижнему краю */
-  left: 10px; /* Смещение текста к левому краю */
-  width: calc(100% - 20px); /* Учитывая отступы */
+  bottom: 10px;
+  left: 10px;
 }
 
 .video-card:hover {
