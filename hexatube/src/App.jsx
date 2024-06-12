@@ -97,10 +97,6 @@ const handleVideoClick = (video) => {
           <div className="content"> 
           {renderContent()}
           </div>
-          <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
-          <div className="content">
-              {renderContent()}
-          </div>
           <Footer setSelectedComponent={setCurrentComponent} />
       </div>
   );
