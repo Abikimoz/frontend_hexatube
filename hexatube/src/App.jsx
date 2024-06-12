@@ -10,6 +10,7 @@ import Login from './components/Login/Login.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import About from './components/About/About.jsx';
 import Upload from './components/Upload/Upload.jsx';
+import Team from './components/Team/Team.jsx';
 import './App.css'
 
 function App() {
@@ -66,18 +67,20 @@ const handleVideoClick = (video) => {
 };
 
   const components = {
-      videoGrid: <VideoGrid videos={videos} onVideoClick={handleVideoClick} />,
-      login: <Login />,
-      register: <Register />,
-      dashboard: <Dashboard />,
-      about: <About />,
-      profile: <Profile />,
-      upload: <Upload />,
-      videoDetail: selectedVideo ? (
-          <div>
-              <h2>Выбрано видео: {selectedVideo.title}</h2>
-          </div>
-      ) : null,
+    videoGrid: <VideoGrid videos={videos} />,
+    login: <Login setSelectedComponent={setCurrentComponent}/>,
+    register: <Register />,
+    dashboard: <Dashboard />,
+    about: <About/>,
+    profile: <Profile setSelectedComponent={setCurrentComponent}/>,
+    team: <Team/>,
+    upload: <Upload/>,
+    header: <Header setSelectedComponent={setCurrentComponent}/>,
+    videoDetail: selectedVideo ? (
+        <div>
+            <h2>Выбрано видео: {selectedVideo.title}</h2>
+        </div>
+    ) : null,
   };
 
   const renderContent = () => {
@@ -86,9 +89,13 @@ const handleVideoClick = (video) => {
 
   return (
       <div className="App">
-          <Header handleSearch={handleSearch} />
-          <div className="profile">
-              <Profile setSelectedComponent={setCurrentComponent} />
+        <Header setSelectedComponent={setCurrentComponent}/>
+        <div className='profile'>
+        <Profile setSelectedComponent={setCurrentComponent}/>
+        </div>
+        <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
+          <div className="content"> 
+          {renderContent()}
           </div>
           <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
           <div className="content">

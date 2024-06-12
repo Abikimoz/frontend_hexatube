@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-import UploadForm from '../Upload/Upload';
+import Upload from '../Upload/Upload';
 
 const Dashboard = () => {
     const [videos, setVideos] = useState([]);
@@ -26,7 +25,7 @@ const Dashboard = () => {
     return (
         <div>
             <h1>Dashboard</h1>
-            <UploadForm />
+            <Upload />
             <div>
                 {videos.map(video => (
                     <VideoPlayer key={video.id} videoUrl={video.url} />
