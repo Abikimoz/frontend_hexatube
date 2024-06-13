@@ -2,13 +2,15 @@
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 20em;
+  max-width: 30em;
   text-align: center;
 }
 
 .login-form h2 {
   color:#ccc;
   margin-bottom: 1.5rem;
+  background: linear-gradient(to right, transparent, rgba(42, 9, 92, 0.505));
+  border-radius: 5px;
 }
 
 .form-group {
@@ -53,7 +55,6 @@ button:hover {
 
 .reg {
   color: white;
-
   cursor: pointer;
 }
 

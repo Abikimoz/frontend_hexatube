@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { categories } from './Collection.jsx';
 import './Categories.css';
 
-const Categories = ({ selectedCategory, setCategory }) => {
+
+const Categories = ({ setSelectedComponent, selectedCategory, setCategory }) => {
   return (
     <nav className="cat">
       <div className='nav-icons'>
@@ -11,10 +13,13 @@ const Categories = ({ selectedCategory, setCategory }) => {
           return (
             <li 
               key={category.id} 
-              onClick={() => setCategory(category.id)}
+              onClick={() => { 
+                setCategory(category.id);
+                setSelectedComponent('VideoGrid')
+               }}
               className={selectedCategory === category.id ? 'active' : ''}
             >
-              <IconComponent className={`icons ${selectedCategory === category.id ? 'active' : ''}`} />
+              <IconComponent className={`icons ${ selectedCategory === category.id  ? 'active' : ''}` } />
             </li>
           );
         })}
@@ -23,6 +28,9 @@ const Categories = ({ selectedCategory, setCategory }) => {
   );
 }
 
+Categories.propTypes = {
+  setSelectedComponent: PropTypes.func.isRequired,
+};
 
 export default Categories;
 {/* готово*/}

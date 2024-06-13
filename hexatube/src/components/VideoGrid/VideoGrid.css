@@ -8,9 +8,10 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 2em;
 }
 
 .video-item {
-  width: 200px;
-  margin: 10px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.171);
 }
