@@ -29,9 +29,9 @@
 }
 
 .header {
-  margin: 1em 0;
+  margin: 1em 2vw;
   width: 100vw;
-  background: linear-gradient(to right, transparent, rgba(42, 9, 92, 0.505));
+  background: linear-gradient(to right, transparent, rgba(14, 3, 29, 0.505));
   color: white;
   display: flex;
   flex-wrap: wrap;
@@ -54,27 +54,23 @@
 
 .upload {
   display: flex;
-  float: left;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 100%;
   background-color: rgba(48, 33, 81, 0.5);
-  height: 100%;
-  margin-bottom: 1em;
+  border-radius: 10px;
   height: auto;
   color: rgb(247, 249, 249);
   width: auto;
-  margin: 1em 3em;
+  margin: 1em auto 4em;
 }
 
 .container {
   display: block;
-  justify-content: center;
-  background-color: rgba(48, 33, 81, 0.5);
+  background-color: rgba(4, 3, 7, 0.386);
+  border-radius: 15px;
   align-items: center;
   height: 100%;
-  float:left;
-  margin: 1em 3em;
+  margin: 1em auto 4em;
   text-align: center;
 }
 
@@ -85,13 +81,9 @@
   padding: 10px;
 }
 
-.video-card { /* Ведется работа */
-  width: 200px;
-  margin: 10px;
-}
-
-.video-card img { /* Ведется работа */
-  width: 100%;
+.video-card {
+  width: 20vw;
+  margin: 1vw;
 }
 
 .footer {

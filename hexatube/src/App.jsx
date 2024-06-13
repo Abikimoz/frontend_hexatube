@@ -13,6 +13,7 @@ import Upload from './components/Upload/Upload.jsx';
 import Team from './components/Team/Team.jsx';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import './App.css'
+import { categories } from './components/Сategories/Collection.jsx';
 
 function App() {
     const [selectedCategory, setSelectedCategory] = useState('all');
@@ -89,15 +90,15 @@ function App() {
 
     return (
         <div className="App">
-            <Header setSelectedComponent={setCurrentComponent} onSearch={handleSearch} setSearchQuery={setSearchQuery} />
-            <div className='profile'>
+              <Header setSelectedComponent={setCurrentComponent} onSearch={handleSearch} setSearchQuery={setSearchQuery} />
+              <div className='profile'>
                 <Profile setSelectedComponent={setCurrentComponent} />
-            </div>
-            <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} />
-            <div className="content">
+              </div>
+              <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} setSelectedComponent={setCurrentComponent}/>
+              <div className="content">
                 {renderContent()}
-            </div>
-            <Footer setSelectedComponent={setCurrentComponent} />
+              </div>
+              <Footer setSelectedComponent={setCurrentComponent} />   
         </div>
     );
 }

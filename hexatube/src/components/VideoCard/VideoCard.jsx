@@ -4,7 +4,7 @@ import './VideoCard.css';
 const VideoCard = ({ video }) => {
   return (
     <div className="video-card">
-      <img src={video.thumbnail} alt={video.title} />
+        <img src={video.thumbnail} alt={video.title} />
       <div className="video-title">{video.title}</div>
     </div>
   );

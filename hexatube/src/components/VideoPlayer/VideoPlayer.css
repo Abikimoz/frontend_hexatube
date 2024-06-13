@@ -5,6 +5,7 @@
 }
 
 .video-title {
-	color: aquamarine;
-	font-size: 5vh;
+	color: rgb(255, 255, 255);
+	font-size: 6vh;
+  font-weight: 400;
 }

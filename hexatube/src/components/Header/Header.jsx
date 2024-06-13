@@ -7,10 +7,10 @@ const Header = ({ setSelectedComponent, onSearch, setSearchQuery }) => {
   return (
     <header className='header'>
         <div className='logo'>
-          <img src='logo.png' alt='logo'className='logo-img'></img>
+        <img src='logo.png' alt='logo'className='logo-img'></img>
           <p className='home' onClick={() => setSelectedComponent('videoGrid')}>HexaTube</p>
         </div>
-        <SearchBar className='search' onSearch={onSearch} setSearchQuery={setSearchQuery}/>
+      <div className='search-field'><SearchBar className='search' onSearch={onSearch} setSearchQuery={setSearchQuery}/></div>
     </header>
   );
 };

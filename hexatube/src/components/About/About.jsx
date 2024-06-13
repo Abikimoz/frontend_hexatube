@@ -11,5 +11,3 @@ const About = () => {
 }
 
 export default About;
-
-{/* Ведется работа */}
