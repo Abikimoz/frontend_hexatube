@@ -6,18 +6,20 @@ import './Upload.css';
 
 const Upload = () => {
   const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [file, setFile] = useState(null);
+  const [video, setVideo] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [successfullyUploaded, setSuccessfullyUploaded] = useState(false);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleVideoChange = (e) => {
+    setSuccessfullyUploaded(false);
+    setVideo(e.target.files[0]);
   };
 
   const handleImageChange = (e) => {
+    setSuccessfullyUploaded(false);
     setImage(e.target.files[0]);
     const reader = new FileReader();
     reader.onload = () => {
@@ -30,18 +32,19 @@ const Upload = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('title', title);
-    formData.append('author', author);
-    formData.append('file', file);
+    formData.append('name', title);
+    formData.append('video', video);
+    formData.append('preview', image);
     formData.append('category', selectedCategory);
 
     try {
-      const response = await axios.post('/upload', formData, {
+      const response = await axios.post('https://hexatube.fun/api/video/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log('Видео успешно загружено:', response.data);
+      setSuccessfullyUploaded(true);
     } catch (error) {
       console.error('Ошибка при загрузке видео:', error);
     }
@@ -58,16 +61,6 @@ const Upload = () => {
               id='title' 
               value={title} 
               onChange={(e) => setTitle(e.target.value)} 
-              required 
-            />
-          </div>
-          <div className='form-group'>
-            <label htmlFor="author">Автор:</label>
-            <input 
-              type='text' 
-              id='author' 
-              value={author} 
-              onChange={(e) => setAuthor(e.target.value)} 
               required 
             />
           </div>
@@ -89,8 +82,8 @@ const Upload = () => {
             <input 
               type='file' 
               id='file' 
-              accept='video/*' 
-              onChange={handleFileChange} 
+              accept='.mp4,.mov,.webp' 
+              onChange={handleVideoChange} 
               required 
             />
           </div>
@@ -99,7 +92,7 @@ const Upload = () => {
             <input 
               type='file' 
               id='image' 
-              accept='image/*' 
+              accept='image/png,image/gif,image/jpeg,image/webp' 
               onChange={handleImageChange} 
               required 
             />
@@ -110,6 +103,9 @@ const Upload = () => {
             </button>
           </div>
         </div>
+        {successfullyUploaded ? <div>
+          <p className="uploaded">Загружено!</p>
+        </div> : <div></div>}
         <div className={`image-preview ${!isImageLoaded ? 'hidden' : ''}`}>
           <div className='preview-text'>Preview:</div>
           {imagePreview && <img src={imagePreview} alt="Предпросмотр" />}
