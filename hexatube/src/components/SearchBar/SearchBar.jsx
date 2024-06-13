@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import './SearchBar.css';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, setSearchQuery }) => {
   const [query, setQuery] = useState('');
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
+    setSearchQuery(e.target.value);
   };
 
   const handleSearch = () => {
-    onSearch(query);
+    onSearch();
   };
 
   return (

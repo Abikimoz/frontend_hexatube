@@ -19,10 +19,11 @@ function App() {
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [videos, setVideos] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [triggerQuery, setTriggerQuery] = useState(false);
 
     useEffect(() => {
         fetchVideos();
-    }, [selectedCategory, searchQuery]);
+    }, [selectedCategory, triggerQuery]);
 
     const fetchVideos = async () => {
         try {
@@ -31,7 +32,7 @@ function App() {
                     page_size: 10,
                     page: 1,
                     category: selectedCategory !== 'all' ? selectedCategory : undefined,
-                    query: searchQuery || undefined
+                    query: searchQuery !== '' ? searchQuery : undefined
                 },
                 headers: {
                     accept: 'application/json'
@@ -57,8 +58,8 @@ function App() {
         setSelectedCategory(category);
     };
 
-    const handleSearch = (query) => {
-        setSearchQuery(query);
+    const handleSearch = () => {
+        setTriggerQuery(!triggerQuery);
     };
 
     const handleVideoClick = (video) => {
@@ -89,7 +90,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header setSelectedComponent={setCurrentComponent} onSearch={handleSearch}/>
+            <Header setSelectedComponent={setCurrentComponent} onSearch={handleSearch} setSearchQuery={setSearchQuery} />
             <div className='profile'>
                 <Profile setSelectedComponent={setCurrentComponent} />
             </div>
