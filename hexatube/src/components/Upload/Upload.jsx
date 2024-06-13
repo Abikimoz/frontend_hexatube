@@ -82,7 +82,7 @@ const Upload = () => {
             <input 
               type='file' 
               id='file' 
-              accept='video/*' 
+              accept='.mp4,.mov,.webp' 
               onChange={handleVideoChange} 
               required 
             />
@@ -92,7 +92,7 @@ const Upload = () => {
             <input 
               type='file' 
               id='image' 
-              accept='image/*' 
+              accept='image/png,image/gif,image/jpeg,image/webp' 
               onChange={handleImageChange} 
               required 
             />
