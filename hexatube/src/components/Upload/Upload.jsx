@@ -6,15 +6,14 @@ import './Upload.css';
 
 const Upload = () => {
   const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [file, setFile] = useState(null);
+  const [video, setVideo] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const handleVideoChange = (e) => {
+    setVideo(e.target.files[0]);
   };
 
   const handleImageChange = (e) => {
@@ -30,13 +29,13 @@ const Upload = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('title', title);
-    formData.append('author', author);
-    formData.append('file', file);
+    formData.append('name', title);
+    formData.append('video', video);
+    formData.append('preview', image);
     formData.append('category', selectedCategory);
 
     try {
-      const response = await axios.post('/upload', formData, {
+      const response = await axios.post('https://hexatube.fun/api/video/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -62,16 +61,6 @@ const Upload = () => {
             />
           </div>
           <div className='form-group'>
-            <label htmlFor="author">Автор:</label>
-            <input 
-              type='text' 
-              id='author' 
-              value={author} 
-              onChange={(e) => setAuthor(e.target.value)} 
-              required 
-            />
-          </div>
-          <div className='form-group'>
             <label htmlFor='category'>Категория:</label>
             <select 
               id='category' 
@@ -90,7 +79,7 @@ const Upload = () => {
               type='file' 
               id='file' 
               accept='video/*' 
-              onChange={handleFileChange} 
+              onChange={handleVideoChange} 
               required 
             />
           </div>
