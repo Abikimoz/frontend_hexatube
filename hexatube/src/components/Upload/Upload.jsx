@@ -11,12 +11,15 @@ const Upload = () => {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [successfullyUploaded, setSuccessfullyUploaded] = useState(false);
 
   const handleVideoChange = (e) => {
+    setSuccessfullyUploaded(false);
     setVideo(e.target.files[0]);
   };
 
   const handleImageChange = (e) => {
+    setSuccessfullyUploaded(false);
     setImage(e.target.files[0]);
     const reader = new FileReader();
     reader.onload = () => {
@@ -41,6 +44,7 @@ const Upload = () => {
         },
       });
       console.log('Видео успешно загружено:', response.data);
+      setSuccessfullyUploaded(true);
     } catch (error) {
       console.error('Ошибка при загрузке видео:', error);
     }
@@ -99,6 +103,9 @@ const Upload = () => {
             </button>
           </div>
         </div>
+        {successfullyUploaded ? <div>
+          <p className="uploaded">Загружено!</p>
+        </div> : <div></div>}
         <div className={`image-preview ${!isImageLoaded ? 'hidden' : ''}`}>
           <div className='preview-text'>Preview:</div>
           {imagePreview && <img src={imagePreview} alt="Предпросмотр" />}

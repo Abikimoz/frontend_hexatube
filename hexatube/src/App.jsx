@@ -68,7 +68,7 @@ function App() {
     };
 
     const components = {
-        videoGrid: <VideoGrid videos={videos} />,
+        videoGrid: <VideoGrid videos={videos} onVideoClick={handleVideoClick}/>,
         login: <Login setSelectedComponent={setCurrentComponent} />,
         register: <Register />,
         dashboard: <Dashboard />,
@@ -85,7 +85,7 @@ function App() {
     };
 
     const renderContent = () => {
-        return components[currentComponent] || <VideoGrid videos={videos} onVideoClick={handleVideoClick} />;
+        return components[currentComponent] || components.videoGrid;
     };
 
     return (
