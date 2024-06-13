@@ -1,10 +1,14 @@
 import React from 'react';
+import './VideoPlayer.css';
 
-const VideoPlayer = ({ videoUrl }) => {
+const VideoPlayer = ({ id, title, thumbnail, videoUrl, type }) => {
     return (
-        <video width="600" controls>
-            <source src={videoUrl} type="video/mp4" />
-        </video>
+        <div className="videoplayer">
+            <p className="video-title">{title}</p>
+            <video width="600" height={480} poster={thumbnail} controls muted>
+                <source src={videoUrl} type={type} />
+            </video>
+        </div>
     );
 };
 

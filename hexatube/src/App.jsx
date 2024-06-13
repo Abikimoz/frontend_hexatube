@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer.jsx';
 import About from './components/About/About.jsx';
 import Upload from './components/Upload/Upload.jsx';
 import Team from './components/Team/Team.jsx';
+import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import './App.css'
 
 function App() {
@@ -44,7 +45,9 @@ function App() {
             const videoData = response.data.videos.map((video) => ({
                 id: video.id,
                 title: video.name,
-                thumbnail: video.preview
+                thumbnail: video.preview,
+                videoUrl: video.video,
+                type: video.type,
             }));
 
             setVideos(videoData);
@@ -77,11 +80,7 @@ function App() {
         team: <Team />,
         upload: <Upload />,
         header: <Header setSelectedComponent={setCurrentComponent} />,
-        videoDetail: selectedVideo ? (
-            <div>
-                <h2>Выбрано видео: {selectedVideo.title}</h2>
-            </div>
-        ) : null,
+        videoDetail: <VideoPlayer {...selectedVideo} />
     };
 
     const renderContent = () => {
