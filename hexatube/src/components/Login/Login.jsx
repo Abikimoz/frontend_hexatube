@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import './Login.css';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
-function Login({ setSelectedComponent }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+function Login({ setSelectedComponent, onLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { email, password });
-      console.log('Login successful:', response.data);
+      await onLogin({ email, password });
+      navigate("/dashboard"); // перезагрузка на страницу Dashboard или любую другую страницу после успешного входа
     } catch (error) {
-      setError('Неправильный адрес электронной почты или пароль.');
-      console.error('Login error:', error);
+      setError("Неправильный адрес электронной почты или пароль.");
+      console.error("Login error:", error);
     }
   };
 
@@ -46,7 +48,7 @@ function Login({ setSelectedComponent }) {
         </div>
         <button type="submit">Войти</button>
       </form>
-      <p className="reg" onClick={() => setSelectedComponent('register')}>
+      <p className="reg" onClick={() => setSelectedComponent("register")}>
         Регистрация
       </p>
     </div>

@@ -7,7 +7,7 @@
 }
 
 .login-form h2 {
-  color:#ccc;
+  color: #ccc;
   margin-bottom: 1.5rem;
   background: linear-gradient(to right, transparent, rgba(42, 9, 92, 0.505));
   border-radius: 5px;
@@ -19,7 +19,7 @@
 }
 
 .form-group label {
-  color:#ccc;
+  color: #ccc;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -45,7 +45,7 @@ button {
 }
 
 button:hover {
-  background: #0f0244;;
+  background: #0f0244;
 }
 
 .error {
@@ -59,5 +59,5 @@ button:hover {
 }
 
 .reg:hover {
-  color:#a19eab;
+  color: #a19eab;
 }

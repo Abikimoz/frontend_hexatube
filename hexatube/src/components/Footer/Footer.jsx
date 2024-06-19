@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Footer.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Footer.css";
 
 function Footer({ setSelectedComponent }) {
   return (
     <footer className="footer">
       <div className="first-block">
-        <li onClick={() => setSelectedComponent('team')}>Команда</li>
+        <li onClick={() => setSelectedComponent("team")}>Команда</li>
       </div>
       <div className="second-block">
-        <li onClick={() => setSelectedComponent('about')}>О проекте</li>
+        <li onClick={() => setSelectedComponent("about")}>О проекте</li>
       </div>
     </footer>
   );

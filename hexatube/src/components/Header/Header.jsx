@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SearchBar from '../SearchBar/SearchBar.jsx';
-import './Header.css';
+import React from "react";
+import PropTypes from "prop-types";
+import SearchBar from "../SearchBar/SearchBar.jsx";
+import "./Header.css";
 
 function Header({ setSelectedComponent, onSearch, setSearchQuery }) {
   return (
     <header className="header">
       <div className="logo">
         <img src="logo.png" alt="logo" className="logo-img" />
-        <p className="home" onClick={() => setSelectedComponent('videoGrid')}>
+        <p className="home" onClick={() => setSelectedComponent("videoGrid")}>
           HexaTube
         </p>
       </div>

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { FaCloudUploadAlt } from 'react-icons/fa';
-import axios from 'axios';
-import { categories } from '../Сategories/Collection';
-import './Upload.css';
+import React, { useState, useEffect } from "react";
+import { FaCloudUploadAlt } from "react-icons/fa";
+import axios from "axios";
+import { categories } from "../Сategories/Collection";
+import "./Upload.css";
 
 function Upload() {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [video, setVideo] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -32,25 +32,25 @@ function Upload() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('name', title);
-    formData.append('video', video);
-    formData.append('preview', image);
-    formData.append('category', selectedCategory);
+    formData.append("name", title);
+    formData.append("video", video);
+    formData.append("preview", image);
+    formData.append("category", selectedCategory);
 
     try {
       const response = await axios.post(
-        'https://hexatube.fun/api/video/upload',
+        "https://hexatube.fun/api/video/upload",
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         },
       );
-      console.log('Видео успешно загружено:', response.data);
+      console.log("Видео успешно загружено:", response.data);
       setSuccessfullyUploaded(true);
     } catch (error) {
-      console.error('Ошибка при загрузке видео:', error);
+      console.error("Ошибка при загрузке видео:", error);
     }
   };
 
@@ -116,7 +116,7 @@ function Upload() {
         ) : (
           <div />
         )}
-        <div className={`image-preview ${!isImageLoaded ? 'hidden' : ''}`}>
+        <div className={`image-preview ${!isImageLoaded ? "hidden" : ""}`}>
           <div className="preview-text">Preview:</div>
           {imagePreview && <img src={imagePreview} alt="Предпросмотр" />}
         </div>
