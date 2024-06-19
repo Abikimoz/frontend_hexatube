@@ -1,7 +1,7 @@
 import React from 'react';
 import './VideoPlayer.css';
 
-const VideoPlayer = ({ id, title, thumbnail, videoUrl, type }) => {
+function VideoPlayer({ id, title, thumbnail, videoUrl, type }) {
   return (
     <div className="videoplayer">
       <p className="video-title">{title}</p>
@@ -10,6 +10,6 @@ const VideoPlayer = ({ id, title, thumbnail, videoUrl, type }) => {
       </video>
     </div>
   );
-};
+}
 
 export default VideoPlayer;

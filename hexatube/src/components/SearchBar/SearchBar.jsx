@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FaSearch } from "react-icons/fa";
+import { FaSearch } from 'react-icons/fa';
 import './SearchBar.css';
 
-const SearchBar = ({ onSearch, setSearchQuery }) => {
+function SearchBar({ onSearch, setSearchQuery }) {
   const [query, setQuery] = useState('');
 
   const handleInputChange = (e) => {
@@ -23,11 +23,13 @@ const SearchBar = ({ onSearch, setSearchQuery }) => {
         placeholder="Search..."
       />
       <button onClick={handleSearch}>
-          <FaSearch className='search'/>
+        <FaSearch className="search" />
       </button>
     </div>
   );
 }
 
 export default SearchBar;
-{/* Ведется работа, допишите поиск */}
+{
+  /* Ведется работа, допишите поиск */
+}
