@@ -12,95 +12,103 @@ import About from './components/About/About.jsx';
 import Upload from './components/Upload/Upload.jsx';
 import Team from './components/Team/Team.jsx';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
-import './App.css'
+import './App.css';
 import { categories } from './components/Сategories/Collection.jsx';
 
 function App() {
-    const [selectedCategory, setSelectedCategory] = useState('all');
-    const [currentComponent, setCurrentComponent] = useState('videoGrid');
-    const [selectedVideo, setSelectedVideo] = useState(null);
-    const [videos, setVideos] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [triggerQuery, setTriggerQuery] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentComponent, setCurrentComponent] = useState('videoGrid');
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videos, setVideos] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [triggerQuery, setTriggerQuery] = useState(false);
 
-    useEffect(() => {
-        fetchVideos();
-    }, [selectedCategory, triggerQuery]);
+  useEffect(() => {
+    fetchVideos();
+  }, [selectedCategory, triggerQuery]);
 
-    const fetchVideos = async () => {
-        try {
-            const response = await axios.get('https://hexatube.fun:443/api/video/list', {
-                params: {
-                    page_size: 10,
-                    page: 1,
-                    category: selectedCategory !== 'all' ? selectedCategory : undefined,
-                    query: searchQuery !== '' ? searchQuery : undefined
-                },
-                headers: {
-                    accept: 'application/json'
-                }
-            });
+  const fetchVideos = async () => {
+    try {
+      const response = await axios.get(
+        'https://hexatube.fun:443/api/video/list',
+        {
+          params: {
+            page_size: 10,
+            page: 1,
+            category: selectedCategory !== 'all' ? selectedCategory : undefined,
+            query: searchQuery !== '' ? searchQuery : undefined,
+          },
+          headers: {
+            accept: 'application/json',
+          },
+        },
+      );
 
-            console.log('Response data:', response.data);
+      console.log('Response data:', response.data);
 
-            const videoData = response.data.videos.map((video) => ({
-                id: video.id,
-                title: video.name,
-                thumbnail: video.preview,
-                videoUrl: video.video,
-                type: video.type,
-            }));
+      const videoData = response.data.videos.map((video) => ({
+        id: video.id,
+        title: video.name,
+        thumbnail: video.preview,
+        videoUrl: video.video,
+        type: video.type,
+      }));
 
-            setVideos(videoData);
-            console.log('Videos set:', videoData);
-        } catch (error) {
-            console.error('Error fetching the videos: ', error);
-        }
-    };
+      setVideos(videoData);
+      console.log('Videos set:', videoData);
+    } catch (error) {
+      console.error('Error fetching the videos: ', error);
+    }
+  };
 
-    const handleCategoryChange = (category) => {
-        setSelectedCategory(category);
-    };
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
 
-    const handleSearch = () => {
-        setTriggerQuery(!triggerQuery);
-    };
+  const handleSearch = () => {
+    setTriggerQuery(!triggerQuery);
+  };
 
-    const handleVideoClick = (video) => {
-        setSelectedVideo(video);
-        setCurrentComponent('videoDetail');
-    };
+  const handleVideoClick = (video) => {
+    setSelectedVideo(video);
+    setCurrentComponent('videoDetail');
+  };
 
-    const components = {
-        videoGrid: <VideoGrid videos={videos} onVideoClick={handleVideoClick}/>,
-        login: <Login setSelectedComponent={setCurrentComponent} />,
-        register: <Register />,
-        dashboard: <Dashboard />,
-        about: <About />,
-        profile: <Profile setSelectedComponent={setCurrentComponent} />,
-        team: <Team />,
-        upload: <Upload />,
-        header: <Header setSelectedComponent={setCurrentComponent} />,
-        videoDetail: <VideoPlayer {...selectedVideo} />
-    };
+  const components = {
+    videoGrid: <VideoGrid videos={videos} onVideoClick={handleVideoClick} />,
+    login: <Login setSelectedComponent={setCurrentComponent} />,
+    register: <Register />,
+    dashboard: <Dashboard />,
+    about: <About />,
+    profile: <Profile setSelectedComponent={setCurrentComponent} />,
+    team: <Team />,
+    upload: <Upload />,
+    header: <Header setSelectedComponent={setCurrentComponent} />,
+    videoDetail: <VideoPlayer {...selectedVideo} />,
+  };
 
-    const renderContent = () => {
-        return components[currentComponent] || components.videoGrid;
-    };
+  const renderContent = () =>
+    components[currentComponent] || components.videoGrid;
 
-    return (
-        <div className="App">
-              <Header setSelectedComponent={setCurrentComponent} onSearch={handleSearch} setSearchQuery={setSearchQuery} />
-              <div className='profile'>
-                <Profile setSelectedComponent={setCurrentComponent} />
-              </div>
-              <Categories selectedCategory={selectedCategory} setCategory={handleCategoryChange} setSelectedComponent={setCurrentComponent}/>
-              <div className="content">
-                {renderContent()}
-              </div>
-              <Footer setSelectedComponent={setCurrentComponent} />   
-        </div>
-    );
+  return (
+    <div className="App">
+      <Header
+        setSelectedComponent={setCurrentComponent}
+        onSearch={handleSearch}
+        setSearchQuery={setSearchQuery}
+      />
+      <div className="profile">
+        <Profile setSelectedComponent={setCurrentComponent} />
+      </div>
+      <Categories
+        selectedCategory={selectedCategory}
+        setCategory={handleCategoryChange}
+        setSelectedComponent={setCurrentComponent}
+      />
+      <div className="content">{renderContent()}</div>
+      <Footer setSelectedComponent={setCurrentComponent} />
+    </div>
+  );
 }
 
 export default App;

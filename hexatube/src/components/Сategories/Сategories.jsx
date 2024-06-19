@@ -3,23 +3,24 @@ import PropTypes from 'prop-types';
 import { categories } from './Collection.jsx';
 import './Categories.css';
 
-
-const Categories = ({ setSelectedComponent, selectedCategory, setCategory }) => {
+function Categories({ setSelectedComponent, selectedCategory, setCategory }) {
   return (
     <nav className="cat">
-      <div className='nav-icons'>
-      {categories.map(category => {
+      <div className="nav-icons">
+        {categories.map((category) => {
           const IconComponent = category.icon;
           return (
-            <li 
-              key={category.id} 
-              onClick={() => { 
+            <li
+              key={category.id}
+              onClick={() => {
                 setCategory(category.id);
-                setSelectedComponent('VideoGrid')
-               }}
+                setSelectedComponent('VideoGrid');
+              }}
               className={selectedCategory === category.id ? 'active' : ''}
             >
-              <IconComponent className={`icons ${ selectedCategory === category.id  ? 'active' : ''}` } />
+              <IconComponent
+                className={`icons ${selectedCategory === category.id ? 'active' : ''}`}
+              />
             </li>
           );
         })}
@@ -33,4 +34,6 @@ Categories.propTypes = {
 };
 
 export default Categories;
-{/* готово*/}
+{
+  /* готово */
+}

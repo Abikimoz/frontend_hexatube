@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { FaCloudUploadAlt } from "react-icons/fa";
-import { categories } from '../Сategories/Collection';
+import { FaCloudUploadAlt } from 'react-icons/fa';
 import axios from 'axios';
+import { categories } from '../Сategories/Collection';
 import './Upload.css';
 
-const Upload = () => {
+function Upload() {
   const [title, setTitle] = useState('');
   const [video, setVideo] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -38,11 +38,15 @@ const Upload = () => {
     formData.append('category', selectedCategory);
 
     try {
-      const response = await axios.post('https://hexatube.fun/api/video/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      const response = await axios.post(
+        'https://hexatube.fun/api/video/upload',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         },
-      });
+      );
       console.log('Видео успешно загружено:', response.data);
       setSuccessfullyUploaded(true);
     } catch (error) {
@@ -51,68 +55,74 @@ const Upload = () => {
   };
 
   return (
-    <div className='upload'>
-      <form onSubmit={handleSubmit} className='upload-form'>
-        <div className='form-left'>
-          <div className='form-group'>
-            <label htmlFor='title'>Название:</label>
-            <input 
-              type='text' 
-              id='title' 
-              value={title} 
-              onChange={(e) => setTitle(e.target.value)} 
-              required 
+    <div className="upload">
+      <form onSubmit={handleSubmit} className="upload-form">
+        <div className="form-left">
+          <div className="form-group">
+            <label htmlFor="title">Название:</label>
+            <input
+              type="text"
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
             />
           </div>
-          <div className='form-group'>
-            <label htmlFor='category'>Категория:</label>
-            <select 
-              id='category' 
-              value={selectedCategory} 
-              onChange={(e) => setSelectedCategory(e.target.value)} 
-              required 
+          <div className="form-group">
+            <label htmlFor="category">Категория:</label>
+            <select
+              id="category"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              required
             >
-              {categories.map(category => (
-                <option key={category.id} value={category.id}>{category.name}</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
               ))}
             </select>
           </div>
-          <div className='form-group'>
+          <div className="form-group">
             <label htmlFor="file">Видео:</label>
-            <input 
-              type='file' 
-              id='file' 
-              accept='.mp4,.mov,.webp' 
-              onChange={handleVideoChange} 
-              required 
+            <input
+              type="file"
+              id="file"
+              accept=".mp4,.mov,.webp"
+              onChange={handleVideoChange}
+              required
             />
           </div>
-          <div className='form-group'>
+          <div className="form-group">
             <label htmlFor="image">Preview:</label>
-            <input 
-              type='file' 
-              id='image' 
-              accept='image/png,image/gif,image/jpeg,image/webp' 
-              onChange={handleImageChange} 
-              required 
+            <input
+              type="file"
+              id="image"
+              accept="image/png,image/gif,image/jpeg,image/webp"
+              onChange={handleImageChange}
+              required
             />
           </div>
-          <div className='button-container'>
-            <button type='submit'>
-              <FaCloudUploadAlt color='white' size={50}/>
+          <div className="button-container">
+            <button type="submit">
+              <FaCloudUploadAlt color="white" size={50} />
             </button>
           </div>
         </div>
-        {successfullyUploaded ? <div>
-          <p className="uploaded">Загружено!</p>
-        </div> : <div></div>}
+        {successfullyUploaded ? (
+          <div>
+            <p className="uploaded">Загружено!</p>
+          </div>
+        ) : (
+          <div />
+        )}
         <div className={`image-preview ${!isImageLoaded ? 'hidden' : ''}`}>
-          <div className='preview-text'>Preview:</div>
+          <div className="preview-text">Preview:</div>
           {imagePreview && <img src={imagePreview} alt="Предпросмотр" />}
         </div>
       </form>
     </div>
   );
-};
+}
 
 export default Upload;

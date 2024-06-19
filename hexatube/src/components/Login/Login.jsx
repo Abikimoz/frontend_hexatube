@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Login.css';
 
-const Login = ({ setSelectedComponent }) => {
+function Login({ setSelectedComponent }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -46,10 +46,12 @@ const Login = ({ setSelectedComponent }) => {
         </div>
         <button type="submit">Войти</button>
       </form>
-      <p className='reg' onClick={() => setSelectedComponent('register')}>Регистрация</p>
+      <p className="reg" onClick={() => setSelectedComponent('register')}>
+        Регистрация
+      </p>
     </div>
   );
-};
+}
 
 Login.propTypes = {
   setSelectedComponent: PropTypes.func.isRequired,

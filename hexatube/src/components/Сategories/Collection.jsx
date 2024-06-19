@@ -1,14 +1,23 @@
-import { RxHome } from "react-icons/rx";
-import { FaCar, FaLaptopMedical } from "react-icons/fa";
-import { BsBackpack, BsStars, BsNewspaper } from "react-icons/bs";
-import { BiPalette } from "react-icons/bi";
-import { GiTechnoHeart, GiForkKnifeSpoon, GiPlantsAndAnimals, GiFilmSpool } from "react-icons/gi";
-import { TbMickeyFilled } from "react-icons/tb";
-import { MdCastForEducation,MdFamilyRestroom, MdOutlinePsychology, MdOutlineTheaterComedy} from "react-icons/md";
-import { GrGamepad } from "react-icons/gr";
-import { IoMusicalNotes } from "react-icons/io5";
-import { FaCommentDots } from "react-icons/fa6";
-
+import { RxHome } from 'react-icons/rx';
+import { FaCar, FaLaptopMedical } from 'react-icons/fa';
+import { BsBackpack, BsStars, BsNewspaper } from 'react-icons/bs';
+import { BiPalette } from 'react-icons/bi';
+import {
+  GiTechnoHeart,
+  GiForkKnifeSpoon,
+  GiPlantsAndAnimals,
+  GiFilmSpool,
+} from 'react-icons/gi';
+import { TbMickeyFilled } from 'react-icons/tb';
+import {
+  MdCastForEducation,
+  MdFamilyRestroom,
+  MdOutlinePsychology,
+  MdOutlineTheaterComedy,
+} from 'react-icons/md';
+import { GrGamepad } from 'react-icons/gr';
+import { IoMusicalNotes } from 'react-icons/io5';
+import { FaCommentDots } from 'react-icons/fa6';
 
 export const categories = [
   { id: 'all', name: 'Случайные', icon: RxHome },
