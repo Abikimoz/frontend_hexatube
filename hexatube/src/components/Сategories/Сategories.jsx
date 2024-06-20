@@ -14,9 +14,9 @@ function Categories({ setSelectedComponent, selectedCategory, setCategory }) {
               key={category.id}
               onClick={() => {
                 setCategory(category.id);
-                setSelectedComponent('VideoGrid');
+                setSelectedComponent('videoGrid');
               }}
-              className={selectedCategory === category.id ? 'active' : ''}
+
             >
               <IconComponent
                 className={`icons ${selectedCategory === category.id ? 'active' : ''}`}

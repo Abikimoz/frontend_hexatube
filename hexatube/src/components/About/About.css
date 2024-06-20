@@ -1,6 +1,7 @@
 .about {
   display: block;
   margin: 1em 3em 4em;
+  padding: 1em;
   background-color: rgba(4, 3, 7, 0.386);
   border-radius: 15px;
   color: rgb(216, 215, 214);
