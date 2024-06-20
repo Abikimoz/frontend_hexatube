@@ -40,23 +40,15 @@ function App() {
             query: searchQuery !== "" ? searchQuery : undefined,
           },
           headers: {
-            accept: "application/json",
+            Accept: "application/json",
           },
         },
       );
 
       console.log("Response data:", response.data);
 
-      const videoData = response.data.videos.map((video) => ({
-        id: video.id,
-        title: video.name,
-        thumbnail: video.preview,
-        videoUrl: video.video,
-        type: video.type,
-      }));
-
-      setVideos(videoData);
-      console.log("Videos set:", videoData);
+      setVideos(response.data.videos);
+      console.log("Videos set:", response.data.videos);
     } catch (error) {
       console.error("Error fetching the videos: ", error);
     }
@@ -166,7 +158,7 @@ function App() {
   };
 
   const components = {
-    videoGrid: <VideoGrid videos={videos} onVideoClick={handleVideoClick} />,
+    videoGrid: <VideoGrid videos={videos} onVideoClick={handleVideoClick} isAuthenticated={isAuthenticated} />,
     login: (
       <Login onLogin={loginUser} setSelectedComponent={setCurrentComponent} />
     ),
@@ -176,7 +168,7 @@ function App() {
     team: <Team />,
     upload: <Upload />,
     header: <Header setSelectedComponent={setCurrentComponent} />,
-    videoDetail: <VideoPlayer {...selectedVideo} />,
+    videoDetail: <VideoPlayer {...selectedVideo} isAuthenticated={isAuthenticated} />,
   };
 
   const renderContent = () =>

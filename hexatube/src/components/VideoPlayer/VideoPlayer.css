@@ -1,3 +1,12 @@
+.videoplayer-box {
+	display: flex;
+	align-items: center;
+	margin: 1vw auto 3em;
+	padding: 1vw;
+	width: 100%;
+	height: auto;
+}
+
 .videoplayer {
 	display: flex;
 	flex-direction: column;
