@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login({ setSelectedComponent, onLogin }) {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ function Login({ setSelectedComponent, onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await onLogin({ email, password });
+      await onLogin({ username, password });
       navigate("/dashboard"); // перезагрузка на страницу Dashboard или любую другую страницу после успешного входа
     } catch (error) {
       setError("Неправильный адрес электронной почты или пароль.");
@@ -29,10 +29,10 @@ function Login({ setSelectedComponent, onLogin }) {
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
