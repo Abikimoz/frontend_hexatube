@@ -51,25 +51,25 @@ function VideoPlayer({
   };
 
   return (
-    <div className="videoplayer-box">
-      <button
-        onClick={() => handleLikeDislike("like")}
-        disabled={!isAuthenticated}
-      >
-        👍 {likes}
-      </button>
-      <div className="videoplayer">
-        <p className="video-title">{name}</p>
-        <video className="video" poster={preview} controls muted>
-          <source src={video} type={type} />
-        </video>
+    <div className="videoplayer">
+      <p className="video-title">{name}</p>
+      <video className="video" poster={preview} controls muted>
+        <source src={video} type={type} />
+      </video>
+      <div className="videoplayer-buttons">
+        <button
+          onClick={() => handleLikeDislike("like")}
+          disabled={!isAuthenticated}
+        >
+          👍 {likes}
+        </button>
+        <button
+          onClick={() => handleLikeDislike("dislike")}
+          disabled={!isAuthenticated}
+        >
+          👎 {dislikes}
+        </button>
       </div>
-      <button
-        onClick={() => handleLikeDislike("dislike")}
-        disabled={!isAuthenticated}
-      >
-        👎 {dislikes}
-      </button>
     </div>
   );
 }
