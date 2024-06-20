@@ -6,6 +6,9 @@ function Profile({ setSelectedComponent }) {
   return (
     <nav className="nav-profile">
       <div className="profile-row">
+        <li onClick={() => setSelectedComponent("register")} className="nav">
+          Зарегистрироваться
+        </li>
         <li onClick={() => setSelectedComponent("login")} className="nav">
           Войти
         </li>

@@ -14,7 +14,7 @@ function Login({ setSelectedComponent, onLogin }) {
     e.preventDefault();
     try {
       await onLogin({ username, password });
-      navigate("/dashboard"); // перезагрузка на страницу Dashboard или любую другую страницу после успешного входа
+      navigate("/"); // перезагрузка на страницу Dashboard или любую другую страницу после успешного входа
     } catch (error) {
       setError("Неправильный адрес электронной почты или пароль.");
       console.error("Login error:", error);
@@ -27,7 +27,7 @@ function Login({ setSelectedComponent, onLogin }) {
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             id="username"
