@@ -12,7 +12,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/hex2.png') no-repeat center center;
+  background: url("/hex2.png") no-repeat center center;
   background-size: cover;
   z-index: -1;
 }
@@ -25,7 +25,7 @@
   width: 100%;
   height: 100%;
   z-index: -2;
-  background-color: #10034B;
+  background-color: #10034b;
 }
 
 .header {
@@ -91,4 +91,3 @@
   padding: 10px;
   text-align: center;
 }
-

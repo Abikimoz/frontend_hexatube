@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import './Login.css';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import "./Login.css";
 
-function Login({ setSelectedComponent }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+function Login({ setSelectedComponent, onLogin }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { email, password });
-      console.log('Login successful:', response.data);
+      await onLogin({ username, password });
+      setSelectedComponent("videoGrid");
     } catch (error) {
-      setError('Неправильный адрес электронной почты или пароль.');
-      console.error('Login error:', error);
+      setError("Неправильный адрес электронной почты или пароль.");
+      console.error("Login error:", error);
     }
   };
 
@@ -25,12 +24,12 @@ function Login({ setSelectedComponent }) {
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="username">Username:</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -46,7 +45,7 @@ function Login({ setSelectedComponent }) {
         </div>
         <button type="submit">Войти</button>
       </form>
-      <p className="reg" onClick={() => setSelectedComponent('register')}>
+      <p className="reg" onClick={() => setSelectedComponent("register")}>
         Регистрация
       </p>
     </div>

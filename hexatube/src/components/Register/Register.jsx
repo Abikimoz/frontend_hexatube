@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
 
-function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const history = useNavigate();
+function Register({ setSelectedComponent, onRegister }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/register', { email, password });
-      history.push('/login');
+      const user = { username, password };
+      await onRegister(user);
+      setSelectedComponent("login");
     } catch (error) {
-      console.error('Error registering', error);
-      alert('Failed to register');
+      console.error("Error registering", error);
+      alert("Failed to register");
     }
   };
 
@@ -23,12 +21,12 @@ function Register() {
       <form onSubmit={handleSubmit} className="login-form">
         <h2>Регистрация</h2>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="username">Username:</label>
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="form-group">

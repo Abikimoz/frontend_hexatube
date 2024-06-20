@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { categories } from './Collection.jsx';
-import './Categories.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { categories } from "./Collection.jsx";
+import "./Categories.css";
 
 function Categories({ setSelectedComponent, selectedCategory, setCategory }) {
   return (
@@ -14,12 +14,11 @@ function Categories({ setSelectedComponent, selectedCategory, setCategory }) {
               key={category.id}
               onClick={() => {
                 setCategory(category.id);
-                setSelectedComponent('videoGrid');
+                setSelectedComponent("videoGrid");
               }}
-
             >
               <IconComponent
-                className={`icons ${selectedCategory === category.id ? 'active' : ''}`}
+                className={`icons ${selectedCategory === category.id ? "active" : ""}`}
               />
             </li>
           );

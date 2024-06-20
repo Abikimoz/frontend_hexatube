@@ -1,17 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Profile.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Profile.css";
 
-function Profile({ setSelectedComponent }) {
+function Profile({ setSelectedComponent, isAuthenticated, logoutUser }) {
   return (
     <nav className="nav-profile">
       <div className="profile-row">
-        <li onClick={() => setSelectedComponent('login')} className="nav">
-          Войти
-        </li>
-        <li onClick={() => setSelectedComponent('upload')} className="nav">
-          Загрузить
-        </li>
+        {isAuthenticated ? (
+          <>
+            <li onClick={logoutUser} className="nav">
+              Выйти
+            </li>
+            <li onClick={() => setSelectedComponent("upload")} className="nav">
+              Загрузить
+            </li>
+          </>
+        ) : (
+          <>
+            <li
+              onClick={() => setSelectedComponent("register")}
+              className="nav"
+            >
+              Зарегистрироваться
+            </li>
+            <li onClick={() => setSelectedComponent("login")} className="nav">
+              Войти
+            </li>
+          </>
+        )}
       </div>
     </nav>
   );
