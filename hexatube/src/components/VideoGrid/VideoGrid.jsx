@@ -1,6 +1,6 @@
-import React from 'react';
-import './VideoGrid.css';
-import VideoCard from '../VideoCard/VideoCard';
+import React from "react";
+import "./VideoGrid.css";
+import VideoCard from "../VideoCard/VideoCard";
 
 function VideoGrid({ videos, onVideoClick }) {
   return (

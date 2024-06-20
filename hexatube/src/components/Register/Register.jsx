@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function Register({ onRegister }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const history = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/register', { email, password });
-      history.push('/login');
+      const user = { email, password };
+      await onRegister(user);
+      history("/login");
     } catch (error) {
-      console.error('Error registering', error);
-      alert('Failed to register');
+      console.error("Error registering", error);
+      alert("Failed to register");
     }
   };
 

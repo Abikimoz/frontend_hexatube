@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Upload from '../Upload/Upload';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Upload from "../Upload/Upload";
 
 function Dashboard() {
   const [videos, setVideos] = useState([]);
@@ -8,14 +8,14 @@ function Dashboard() {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get('/videos', {
+        const response = await axios.get("/videos", {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         setVideos(response.data);
       } catch (error) {
-        console.error('Error fetching videos', error);
+        console.error("Error fetching videos", error);
       }
     };
 

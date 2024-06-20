@@ -7,7 +7,7 @@
 }
 
 .login-form h2 {
-  color:#ccc;
+  color: #ccc;
   margin-bottom: 1.5rem;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .form-group label {
-  color:#ccc;
+  color: #ccc;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -43,7 +43,7 @@ button {
 }
 
 button:hover {
-  background: #0f0244;;
+  background: #0f0244;
 }
 
 .error {

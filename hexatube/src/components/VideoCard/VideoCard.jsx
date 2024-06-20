@@ -1,5 +1,5 @@
-import React from 'react';
-import './VideoCard.css';
+import React from "react";
+import "./VideoCard.css";
 
 function VideoCard({ video }) {
   return (

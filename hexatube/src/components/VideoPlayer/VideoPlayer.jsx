@@ -1,5 +1,5 @@
-import React from 'react';
-import './VideoPlayer.css';
+import React from "react";
+import "./VideoPlayer.css";
 
 function VideoPlayer({ id, title, thumbnail, videoUrl, type }) {
   return (
