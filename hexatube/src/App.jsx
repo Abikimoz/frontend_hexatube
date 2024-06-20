@@ -13,7 +13,6 @@ import Upload from './components/Upload/Upload.jsx';
 import Team from './components/Team/Team.jsx';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import './App.css';
-import { categories } from './components/Сategories/Collection.jsx';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');

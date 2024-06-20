@@ -74,7 +74,7 @@
   text-align: center;
 }
 
-.video-grid { /* Ведется работа */
+.video-grid {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
@@ -91,3 +91,4 @@
   padding: 10px;
   text-align: center;
 }
+
