@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-function Register({ onRegister }) {
+function Register({ setSelectedComponent, onRegister }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const user = { username, password };
       await onRegister(user);
-      navigate("/login");
+      setSelectedComponent('login');
     } catch (error) {
       console.error("Error registering", error);
       alert("Failed to register");

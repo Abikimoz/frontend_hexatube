@@ -45,6 +45,7 @@ function Upload() {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+					withCredentials: true,
         },
       );
       console.log("Видео успешно загружено:", response.data);

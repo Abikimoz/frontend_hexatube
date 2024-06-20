@@ -13,8 +13,6 @@ import Upload from './components/Upload/Upload.jsx';
 import Team from './components/Team/Team.jsx';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import './App.css';
-import { categories } from './components/Сategories/Collection.jsx';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -172,10 +170,9 @@ function App() {
     login: (
       <Login onLogin={loginUser} setSelectedComponent={setCurrentComponent} />
     ),
-    register: <Register onRegister={registerUser} />,
+    register: <Register onRegister={registerUser} setSelectedComponent={setCurrentComponent} />,
     dashboard: <Dashboard />,
     about: <About />,
-    profile: <Profile setSelectedComponent={setCurrentComponent} />,
     team: <Team />,
     upload: <Upload />,
     header: <Header setSelectedComponent={setCurrentComponent} />,
@@ -193,8 +190,7 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <div className="profile">
-        <Profile setSelectedComponent={setCurrentComponent} />
-        {isAuthenticated && <button onClick={logoutUser}>Logout</button>}
+        <Profile setSelectedComponent={setCurrentComponent} isAuthenticated={isAuthenticated} logoutUser={logoutUser} />
       </div>
       <Categories
         selectedCategory={selectedCategory}
@@ -202,23 +198,7 @@ function App() {
         setSelectedComponent={setCurrentComponent}
       />
       <div className="content">
-        <Routes>
-          <Route
-            path="/register"
-            element={<Register onRegister={registerUser} />}
-          />
-          <Route
-            path="/login"
-            element={
-              <Login
-                onLogin={loginUser}
-                setSelectedComponent={setCurrentComponent}
-              />
-            }
-          />
-          <Route path="/" element={renderContent()} />
-          {/* Добавьте другие маршруты */}
-        </Routes>
+				{renderContent()}
       </div>
       <Footer setSelectedComponent={setCurrentComponent} />
     </div>

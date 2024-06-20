@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login({ setSelectedComponent, onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await onLogin({ username, password });
-      navigate("/"); // перезагрузка на страницу Dashboard или любую другую страницу после успешного входа
+      setSelectedComponent('videoGrid');
     } catch (error) {
       setError("Неправильный адрес электронной почты или пароль.");
       console.error("Login error:", error);
