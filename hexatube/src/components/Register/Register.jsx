@@ -9,7 +9,7 @@ function Register({ setSelectedComponent, onRegister }) {
     try {
       const user = { username, password };
       await onRegister(user);
-      setSelectedComponent('login');
+      setSelectedComponent("login");
     } catch (error) {
       console.error("Error registering", error);
       alert("Failed to register");

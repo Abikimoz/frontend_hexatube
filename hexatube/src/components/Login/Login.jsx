@@ -11,7 +11,7 @@ function Login({ setSelectedComponent, onLogin }) {
     e.preventDefault();
     try {
       await onLogin({ username, password });
-      setSelectedComponent('videoGrid');
+      setSelectedComponent("videoGrid");
     } catch (error) {
       setError("Неправильный адрес электронной почты или пароль.");
       console.error("Login error:", error);

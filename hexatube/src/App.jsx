@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Header from './components/Header/Header.jsx';
-import Profile from './components/Profile/Profile.jsx';
-import Categories from './components/Сategories/Сategories.jsx';
-import VideoGrid from './components/VideoGrid/VideoGrid.jsx';
-import Register from './components/Register/Register.jsx';
-import Dashboard from './components/Dashboard/Dashboard.jsx';
-import Login from './components/Login/Login.jsx';
-import Footer from './components/Footer/Footer.jsx';
-import About from './components/About/About.jsx';
-import Upload from './components/Upload/Upload.jsx';
-import Team from './components/Team/Team.jsx';
-import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
-import './App.css';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "./components/Header/Header.jsx";
+import Profile from "./components/Profile/Profile.jsx";
+import Categories from "./components/Сategories/Сategories.jsx";
+import VideoGrid from "./components/VideoGrid/VideoGrid.jsx";
+import Register from "./components/Register/Register.jsx";
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import Login from "./components/Login/Login.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import About from "./components/About/About.jsx";
+import Upload from "./components/Upload/Upload.jsx";
+import Team from "./components/Team/Team.jsx";
+import VideoPlayer from "./components/VideoPlayer/VideoPlayer.jsx";
+import "./App.css";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -158,17 +158,30 @@ function App() {
   };
 
   const components = {
-    videoGrid: <VideoGrid videos={videos} onVideoClick={handleVideoClick} isAuthenticated={isAuthenticated} />,
+    videoGrid: (
+      <VideoGrid
+        videos={videos}
+        onVideoClick={handleVideoClick}
+        isAuthenticated={isAuthenticated}
+      />
+    ),
     login: (
       <Login onLogin={loginUser} setSelectedComponent={setCurrentComponent} />
     ),
-    register: <Register onRegister={registerUser} setSelectedComponent={setCurrentComponent} />,
+    register: (
+      <Register
+        onRegister={registerUser}
+        setSelectedComponent={setCurrentComponent}
+      />
+    ),
     dashboard: <Dashboard />,
     about: <About />,
     team: <Team />,
     upload: <Upload />,
     header: <Header setSelectedComponent={setCurrentComponent} />,
-    videoDetail: <VideoPlayer {...selectedVideo} isAuthenticated={isAuthenticated} />,
+    videoDetail: (
+      <VideoPlayer {...selectedVideo} isAuthenticated={isAuthenticated} />
+    ),
   };
 
   const renderContent = () =>
@@ -182,16 +195,18 @@ function App() {
         setSearchQuery={setSearchQuery}
       />
       <div className="profile">
-        <Profile setSelectedComponent={setCurrentComponent} isAuthenticated={isAuthenticated} logoutUser={logoutUser} />
+        <Profile
+          setSelectedComponent={setCurrentComponent}
+          isAuthenticated={isAuthenticated}
+          logoutUser={logoutUser}
+        />
       </div>
       <Categories
         selectedCategory={selectedCategory}
         setCategory={handleCategoryChange}
         setSelectedComponent={setCurrentComponent}
       />
-      <div className="content">
-				{renderContent()}
-      </div>
+      <div className="content">{renderContent()}</div>
       <Footer setSelectedComponent={setCurrentComponent} />
     </div>
   );
